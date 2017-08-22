@@ -11,8 +11,5 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.9.1"
   },
-  "devDependencies": {
-  },
-  "resolutions": {
-  }
+  "devDependencies": {}
 }
