@@ -9,7 +9,7 @@
   "homepage": "demo/index.html",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.9.1",
+    "polymer": "Polymer/polymer#^1.9.1"
   },
   "devDependencies": {
   },
