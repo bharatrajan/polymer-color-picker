@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+
+  <!-- import test frame -->
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <!-- import dependency -->
+
+  <!-- import the element to test -->
+  <link rel="import" href="../color-wheel/color-wheel.html">
+  <style>
+    .center-align{
+      display: flex;
+      justify-content: center;
+      vertical-align: middle;
+
+      display: -webkit-flex;
+      -webkit-justify-content: center;
+      -webkit-vertical-align: middle;
+    }
+
+    .color-wheel-box {
+      padding-top: 100px;
+    }
+    .header{
+      text-align: center;
+      font-family: monospace;
+    }
+    .details{
+      top: 600px;
+      width: 100%;
+      position: absolute;
+    }
+  </style>
+  <script type="text/javascript">
+    var goToSource = function (e) {
+      location.replace("https://github.com/bharatrajan/polymer-color-picker");
+    }
+  </script>
+</head>
+<body>
+    <h2 class="header">
+       Click & Drag inside color wheel to change color
+    </h2>
+  	<color-wheel class="color-wheel-box center-align" hex="" rgb="" image-url="https://bharatrajan.github.io/polymer-color-picker/image/newColorWheel.png"></color-wheel>
+    <div class="details center-align">
+      <button onclick="goToSource()"> Source </button>
+    </div>
+</body>
+</html>

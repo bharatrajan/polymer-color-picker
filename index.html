@@ -12,27 +12,42 @@
   <!-- import the element to test -->
   <link rel="import" href="https://bharatrajan.github.io/polymer-color-picker/color-wheel/color-wheel.html">
   <style>
-    .color-wheel-box {
-      display: flex;
-      justify-content: center;
-      vertical-align: middle;
+  .center-align{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
 
-      display: -webkit-flex;
-      -webkit-justify-content: center;
-      -webkit-vertical-align: middle;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-vertical-align: middle;
+  }
 
-      padding-top: 100px;
-    }
-    .header{
-      text-align: center;
-      font-family: monospace;
-    }
+  .color-wheel-box {
+    padding-top: 100px;
+  }
+  .header{
+    text-align: center;
+    font-family: monospace;
+  }
+  .details{
+    top: 600px;
+    width: 100%;
+    position: absolute;
+  }
   </style>
+  <script type="text/javascript">
+    var goToSource = function (e) {
+      location.replace("https://github.com/bharatrajan/polymer-color-picker");
+    }
+  </script>
 </head>
 <body>
     <h2 class="header">
        Click & Drag inside color wheel to change color
     </h2>
-  	<color-wheel class="color-wheel-box" hex="" rgb="" image-url="https://bharatrajan.github.io/polymer-color-picker/image/newColorWheel.png"></color-wheel>
+  	<color-wheel class="color-wheel-box center-align" hex="" rgb="" image-url="https://bharatrajan.github.io/polymer-color-picker/image/newColorWheel.png"></color-wheel>
+    <div class="details center-align">
+      <button onclick="goToSource()"> Source </button>
+    </div>
 </body>
 </html>
