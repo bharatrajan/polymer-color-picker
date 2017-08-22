@@ -1,0 +1,24 @@
+{
+  "name": "polymer-color-picker",
+  "version": "1.0.0",
+  "description": "Simple color picker using google polymer",
+  "main": "demo.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bharatrajan:Arun2anna@github.com/bharatrajan/polymer-color-picker.git"
+  },
+  "author": "Bharat Rajan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bharatrajan/polymer-color-picker/issues"
+  },
+  "homepage": "https://github.com/bharatrajan/polymer-color-picker#readme",
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  }
+}

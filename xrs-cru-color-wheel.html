@@ -1,0 +1,155 @@
+<dom-module id="xrs-cru-color-wheel">
+
+  <template>
+
+    <style>
+      /* colorpicker styles */
+      .colorpicker {
+          background-color: transparent;
+          position: absolute;
+      }
+      #colorWheel {
+          background-color: transparent;
+          border: 10px solid;
+          border-radius: 50%;
+          float: left;
+      }
+    </style>
+    <div class="colorpicker">
+        <canvas id="colorWheel" height="340" width="340"></canvas>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'xrs-cru-color-wheel',
+      properties: {
+
+
+        /**
+         * @description - URL of the color-wheel image
+         * @value - Defaulting to "colorwheel.png"
+         */
+        imageUrl :{
+          type: String,
+          value: "colorwheel.png",
+          reflectToAttribute: true
+        },
+
+        /**
+         * @description - Selected colors rgb value
+         * @value - in fromat rgb(0,0,0)
+         */
+        rgb:{
+          type: String,
+          reflectToAttribute: true
+        },
+
+        /**
+         * @description - Selected colors rgba value
+         * @value - in fromat rgba(0,0,0,0)
+         */
+        rgba:{
+          type: String,
+          reflectToAttribute: true
+        },
+
+        /**
+         * @description - Selected colors HEX value
+         * @value - in fromat #FFFFFF
+         */
+        hex:{
+          type: String,
+          reflectToAttribute: true
+        }
+      },
+
+
+      /**
+      * @description - Event listener for track event inside color wheel canvas.
+      * @description - For every track event, get the x,y co-ordinate of the track point.
+      * @description - Get pixel information using x,y co-ordinate on canvas's context.
+      * @eventListener
+      * @param {object} e - event of type track
+      * @returns null
+      */
+      _onTrack: function(e){
+        var colorWheelXCoordinate, colorWheelYCoordinate, imageData;
+
+        // get x,y
+        colorWheelXCoordinate = Math.floor(e.detail.x - this.colorWheelOffset.left);
+        colorWheelYCoordinate = Math.floor(e.detail.y - this.colorWheelOffset.top);
+
+        // get pixel from x,y
+        imageData = this.canvasCtx.getImageData(colorWheelXCoordinate, colorWheelYCoordinate, 1, 1);
+
+        this.setRGB(imageData.data);
+        this.setHex(imageData.data);
+        return;
+      },
+
+      /**
+      * @description - Compute Color in RGB from pixel information
+      * @param {array} pixel - Selected pixel information
+      * @returns null
+      */
+      setRGB: function(pixel){
+        var rgbColor = "rgb("+pixel[0]+", "+pixel[1]+", "+pixel[2]+")",
+            rgbaColor = "rgb("+pixel[0]+", "+pixel[1]+", "+pixel[2]+", "+pixel[3]+")";
+
+        this.set("rgb", rgbColor);
+        this.set("rgba", rgbaColor);
+        return;
+      },
+
+      /**
+      * @description - Compute Color in HEX from pixel information
+      * @param {array} pixel - Selected pixel information
+      * @returns null
+      */
+      setHex: function(pixel){
+        var hexColorArr = [], i, hexStr, hexColor;
+        for (i = 0; i < pixel.length - 1; i++) {
+          hexStr = pixel[i].toString(16)
+          hexColorArr[i] = hexStr.length === 1 ? '0' + hexStr : hexStr;
+        };
+        hexColor = '#' + hexColorArr.join("")
+        this.$.colorWheel.style.borderColor = this.hex;
+        this.set("hex", '#' + hexColorArr.join(""));
+        return;
+      },
+
+      /**
+       * @description - Populate canvas with the image from "imageURL"
+       * @param {Object} canvasCtx - Context of canvas inside which image is drawn
+       * @param {String} imageURL - filepath | URL for image
+       * @returns null
+       */
+      drawImage: function(canvasCtx, imageURL){
+          var canvasImage = new Image();
+          canvasImage.onload = function () {
+              canvasCtx.drawImage(canvasImage, 0, 0, canvasImage.width, canvasImage.height);
+          }
+          canvasImage.src = imageURL;
+          return null;
+      },
+
+      /**
+       * @description - Draws image inside canvas
+       * @description - Creates context for canvas
+       * @description - Sets on-track event for canvas
+       * @lifecycle
+       * @returns null
+       */
+      attached: function(){
+          this.set("canvasCtx", this.$.colorWheel.getContext('2d'));
+          this.$.colorWheel.style.borderColor = this.hex;
+          this.drawImage(this.canvasCtx, this.imageUrl);
+          this.listen(this.$.colorWheel, 'track', '_onTrack');
+          this.set("colorWheelOffset", this.$.colorWheel.getBoundingClientRect());
+          return null;
+      }
+    });
+  </script>
+
+</dom-module>
