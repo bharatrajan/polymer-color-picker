@@ -15,7 +15,7 @@
       }
     </style>
     <div class="colorpicker">
-        <canvas id="colorWheel" height="340" width="340"></canvas>
+        <canvas id="colorWheel" height="340" width="340" ></canvas>
     </div>
   </template>
 
@@ -65,11 +65,11 @@
 
 
       /**
-      * @description - Event listener for track event inside color wheel canvas.
+      * @description - Event listener for track & tap event inside color wheel canvas.
       * @description - For every track event, get the x,y co-ordinate of the track point.
       * @description - Get pixel information using x,y co-ordinate on canvas's context.
       * @eventListener
-      * @param {object} e - event of type track
+      * @param {object} e - event of type track | tap
       * @returns null
       */
       _onTrack: function(e){
@@ -144,7 +144,7 @@
       /**
        * @description - Draws image inside canvas
        * @description - Creates context for canvas
-       * @description - Sets on-track event for canvas
+       * @description - Sets event listener for canvas
        * @lifecycle
        * @returns null
        */
@@ -152,7 +152,9 @@
           this.set("canvasCtx", this.$.colorWheel.getContext('2d'));
           this.$.colorWheel.style.borderColor = this.hex;
           this.drawImage(this.canvasCtx, this.imageUrl);
+          this.listen(this.$.colorWheel, 'tap', '_onTrack');
           this.listen(this.$.colorWheel, 'track', '_onTrack');
+
           this.set("colorWheelOffset", this.$.colorWheel.getBoundingClientRect());
           this.setSelectedColor();
           return null;
