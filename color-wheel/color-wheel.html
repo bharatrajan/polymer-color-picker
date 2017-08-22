@@ -84,7 +84,7 @@
 
         this.setRGB(imageData.data);
         this.setHex(imageData.data);
-        this.setSelectedColor();
+        this.setSelectedColorInBorder();
         return;
       },
 
@@ -122,7 +122,11 @@
       * @description - Sets the selected color to colorWheel's border
       * @returns null
       */
-      setSelectedColor:function(){
+      setSelectedColorInBorder:function(){
+        if(!this.isBorderSet){// Sets border during "attached"
+            this.$.colorWheel.style.border = "20px solid transparent";
+            this.isBorderSet = true;
+        }
         this.$.colorWheel.style.border = "20px solid "+this.hex;
       },
 
@@ -150,13 +154,13 @@
        */
       attached: function(){
           this.set("canvasCtx", this.$.colorWheel.getContext('2d'));
-          this.$.colorWheel.style.borderColor = this.hex;
           this.drawImage(this.canvasCtx, this.imageUrl);
+
           this.listen(this.$.colorWheel, 'tap', '_onTrack');
           this.listen(this.$.colorWheel, 'track', '_onTrack');
 
           this.set("colorWheelOffset", this.$.colorWheel.getBoundingClientRect());
-          this.setSelectedColor();
+          this.setSelectedColorInBorder();
           return null;
       }
     });

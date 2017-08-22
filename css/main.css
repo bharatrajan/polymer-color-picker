@@ -1,0 +1,31 @@
+body{
+  font-family: monospace;
+}
+button{
+  height: 50px;
+  width: 100px;
+  background: aqua;
+  border: 0px;
+  border-radius: 25px;
+  font-size: 15px;
+}
+.center-align{
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-vertical-align: middle;
+}
+.color-wheel-box {
+  padding-top: 100px;
+}
+.header{
+  text-align: center;
+}
+.details{
+  top: 600px;
+  width: 100%;
+  position: absolute;
+}
