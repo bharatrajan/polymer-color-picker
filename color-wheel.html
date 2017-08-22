@@ -1,4 +1,4 @@
-<dom-module id="xrs-cru-color-wheel">
+<dom-module id="color-wheel">
 
   <template>
 
@@ -10,7 +10,6 @@
       }
       #colorWheel {
           background-color: transparent;
-          border: 10px solid;
           border-radius: 50%;
           float: left;
       }
@@ -22,7 +21,7 @@
 
   <script>
     Polymer({
-      is: 'xrs-cru-color-wheel',
+      is: 'color-wheel',
       properties: {
 
 
@@ -85,6 +84,7 @@
 
         this.setRGB(imageData.data);
         this.setHex(imageData.data);
+        this.setSelectedColor();
         return;
       },
 
@@ -114,9 +114,16 @@
           hexColorArr[i] = hexStr.length === 1 ? '0' + hexStr : hexStr;
         };
         hexColor = '#' + hexColorArr.join("")
-        this.$.colorWheel.style.borderColor = this.hex;
         this.set("hex", '#' + hexColorArr.join(""));
         return;
+      },
+
+      /**
+      * @description - Sets the selected color to colorWheel's border
+      * @returns null
+      */
+      setSelectedColor:function(){
+        this.$.colorWheel.style.border = "20px solid "+this.hex;
       },
 
       /**
@@ -147,6 +154,7 @@
           this.drawImage(this.canvasCtx, this.imageUrl);
           this.listen(this.$.colorWheel, 'track', '_onTrack');
           this.set("colorWheelOffset", this.$.colorWheel.getBoundingClientRect());
+          this.$.colorWheel.style.border = "20px solid transparent";
           return null;
       }
     });
