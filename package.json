@@ -2,7 +2,7 @@
   "name": "polymer-color-picker",
   "version": "1.0.0",
   "description": "Simple color picker using google polymer",
-  "main": "demo.html",
+  "main": "demo/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
