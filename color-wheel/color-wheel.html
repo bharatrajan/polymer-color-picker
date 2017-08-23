@@ -126,8 +126,10 @@
         if(!this.isBorderSet){// Sets border during "attached"
             this.$.colorWheel.style.border = "20px solid transparent";
             this.isBorderSet = true;
+            return null;
         }
         this.$.colorWheel.style.border = "20px solid "+this.hex;
+        return null;
       },
 
       /**
