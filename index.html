@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <link rel="import" href="https://bharatrajan.github.io/polymer-color-picker/bower_components/polymer/polymer.html">
-  <link rel="import" href="https://bharatrajan.github.io/polymer-color-picker/bower_componentspolymer-mini.html">
-  <link rel="import" href="https://bharatrajan.github.io/polymer-color-picker/bower_componentspolymer/polymer-micro.html">
+  <link rel="import" href="https://bharatrajan.github.io/polymer-color-picker/bower_components/polymer-mini.html">
+  <link rel="import" href="https://bharatrajan.github.io/polymer-color-picker/bower_components/polymer/polymer-micro.html">
 
 
   <!-- import test frame -->
@@ -39,7 +39,9 @@
     <h2 class="header">
        Click or Drag inside color wheel to change color
     </h2>
-  	<color-wheel class="color-wheel-box center-align" hex="" rgb="" image-url="https://bharatrajan.github.io/polymer-color-picker/image/newColorWheel.png"></color-wheel>
+    <div class="color-wheel-container">
+      <color-wheel class="color-wheel-box" hex="" rgb="" image-url="https://bharatrajan.github.io/polymer-color-picker/image/newColorWheel.png"></color-wheel>
+    </div>
     <div class="details center-align">
       <button onclick="goToSource()"> Source </button>
     </div>

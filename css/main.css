@@ -9,6 +9,10 @@ button{
   border-radius: 25px;
   font-size: 15px;
 }
+.color-wheel-container{
+  margin: auto;
+  width: 380px;
+}
 .center-align{
   display: flex;
   justify-content: center;

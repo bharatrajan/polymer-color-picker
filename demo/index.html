@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -21,7 +21,9 @@
        Click or Drag inside color wheel to change color
     </h2
     <template is="dom-bind">
-      <color-wheel class="color-wheel-box center-align" hex="{{hex}}" rgb="{{rgb}}" image-url="../image/newColorWheel.png"></color-wheel>
+      <div class="color-wheel-container">
+        <color-wheel class="color-wheel-box" hex="{{hex}}" rgb="{{rgb}}" image-url="../image/newColorWheel.png"></color-wheel>
+      </div>
     </template>
 
 </body>
