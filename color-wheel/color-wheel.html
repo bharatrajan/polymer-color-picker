@@ -76,8 +76,8 @@
         var colorWheelXCoordinate, colorWheelYCoordinate, imageData;
 
         // get x,y
-        colorWheelXCoordinate = Math.floor(e.detail.x - this.colorWheelOffset.left);
-        colorWheelYCoordinate = Math.floor(e.detail.y - this.colorWheelOffset.top);
+        colorWheelXCoordinate = Math.floor(e.detail.x - this.colorWheelOffset.left - 20);
+        colorWheelYCoordinate = Math.floor(e.detail.y - this.colorWheelOffset.top - 20);
 
         // get pixel from x,y
         imageData = this.canvasCtx.getImageData(colorWheelXCoordinate, colorWheelYCoordinate, 1, 1);
